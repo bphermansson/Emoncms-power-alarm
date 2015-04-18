@@ -9,6 +9,8 @@ used to make sure not to send notifications when the washer is idle during the w
 Notifications are sent via NMA, http://www.notifymyandroid.com.
 To use this service, an account is needed. This account gives a developer key, which is stored in the file "mydeveloperkey".
 
+git add README.md
+git commit -a
 """
 import urllib2
 import time
