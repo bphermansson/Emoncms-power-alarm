@@ -11,7 +11,7 @@ To use this service, an account is needed. This account gives a developer key, w
 
 git add README.md
 git commit -a
-
+git push origin master
 """
 import urllib2
 import time
@@ -45,9 +45,7 @@ def do_read_settings():
 		config.read("settings.txt")
 	except:
 		print "Settings file not found"
-		sys.exit()
-	print config.sections()
-	
+		sys.exit()	
 	try:
 		emonapi = config.get("emoncms", "apikey")
 		print ("Api key found, good")
@@ -88,15 +86,19 @@ def main(keys):
 		ipower=int(power)
 		
 		print ("Current power: " + power)
+		# For debug, store values constantly
+		# Theese values can be used to analyze the current consumption
+		# 
 		#logger.info(power)
 		#logtext = "running: " + str(running) + "---notrunning: " + str(notrunning)
 		#logger.info(logtext)
+		
 		# For debug, read "power" from a local file
 		#f = open('test', 'r')
 		#power = int(f.read())
 		#print str(power)
 		
-		# Power is higher than idle current? (Which in this case is 11)
+		# Power is (much) higher than idle current? (Which in this case is 11)
 		if ipower > 30:
 			running+=1
 			notrunning=0
@@ -141,11 +143,6 @@ def main(keys):
 					p.addkey(keys)
 					res = p.push("Emoncms alarm", 'Washer', 'Washer is done', '', batch_mode=False)
 					pprint(res)
-		#else:
-			# Power is down after it's been up
-		#	if (washerrunning == 1):
-		#		logger.info("Washer is done")
-		#		print "Washer is done"
 
 		# Wait 2 minutes
 		time.sleep(120)
