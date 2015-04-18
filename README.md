@@ -5,3 +5,4 @@ when the machine is started and when the wash is done. A washer draws power irre
 used to make sure not to send notifications when the washer is idle during the wash cycle.
 Notifications are sent via NMA, http://www.notifymyandroid.com.
 To use this service, an account is needed. This account gives a developer key, which is stored in the file "mydeveloperkey".
+
