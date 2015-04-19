@@ -31,7 +31,7 @@ def do_read_settings():
 	# Settings are stored in a file called "settings".
 	# Example:
 	# [emoncms]
-	# api=<api key from http://www.notifymyandroid.com>
+	# api=<api key from Emoncms>
 	
 	global emonapi
 
@@ -98,8 +98,10 @@ def main(keys):
 		#power = int(f.read())
 		#print str(power)
 		
-		# Power is (much) higher than idle current? (Which in this case is 11)
-		if ipower > 30:
+		# Power is (much) higher than idle current? (Which in this case is 11).
+		# But we use a higher value, sometimes the washer is using a little more 
+		# power when idle. 
+		if ipower > 50:
 			running+=1
 			notrunning=0
 			#print "running:"+str(running)
