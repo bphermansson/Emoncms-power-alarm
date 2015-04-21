@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: iso-8859-1 -*-
 """
-This scrips asks an Emoncms server for an energy value. If the value is high, ie if the monitored device
+This script asks an Emoncms server for an energy value. If the value is high, ie if the monitored device
 draws power, a notice is sent to a Smartphone.
 The monitored device in this case is a washing maching, and actions are taken to just send a notice 
 when the machine is started and when the wash is done. A washer draws power irregularly, so counters are 
@@ -85,7 +85,7 @@ def main(keys):
 		power = ''.join(e for e in html if e.isalnum())
 		ipower=int(power)
 		
-		print ("Current power: " + power)
+		#print ("Current power: " + power)
 		# For debug, store values constantly
 		# Theese values can be used to analyze the current consumption
 		# 
@@ -97,6 +97,7 @@ def main(keys):
 		#f = open('test', 'r')
 		#power = int(f.read())
 		#print str(power)
+		#ipower=int(power)
 		
 		# Power is (much) higher than idle current? (Which in this case is 11).
 		# But we use a higher value, sometimes the washer is using a little more 
@@ -105,6 +106,7 @@ def main(keys):
 			running+=1
 			notrunning=0
 			#print "running:"+str(running)
+			print ("Current power: " + power)
 			
 			if (running >= 3 and washerrunning == 0):
 				# The power is high for three runs in a row
