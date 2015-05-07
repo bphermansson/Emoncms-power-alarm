@@ -58,6 +58,8 @@ def main(keys):
 	# Read settings
  	do_read_settings()
 
+	print ("Settings ok")
+
 	# Setup logging
 	logger = logging.getLogger('washpower')
 	hdlr = logging.FileHandler('/var/tmp/washpower.log')
@@ -66,6 +68,8 @@ def main(keys):
 	logger.addHandler(hdlr) 
 	logger.setLevel(logging.INFO)
 	logger.info('Start log')
+	
+	print ("Log started")
 	
 	# Variables
 	runs = 0
@@ -85,7 +89,7 @@ def main(keys):
 		power = ''.join(e for e in html if e.isalnum())
 		ipower=int(power)
 		
-		#print ("Current power: " + power)
+		#print ("Current power: " + str(ipower))
 		# For debug, store values constantly
 		# Theese values can be used to analyze the current consumption
 		# 
@@ -106,7 +110,7 @@ def main(keys):
 			running+=1
 			notrunning=0
 			#print "running:"+str(running)
-			print ("Current power: " + power)
+			print ("Current power: " + power + " (above limit)")
 			
 			if (running >= 3 and washerrunning == 0):
 				# The power is high for three runs in a row
