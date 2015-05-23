@@ -6,3 +6,12 @@ used to make sure not to send notifications when the washer is idle during the w
 Notifications are sent via NMA, http://www.notifymyandroid.com.
 To use this service, an account is needed. This account gives a developer key, which is stored in the file "mydeveloperkey".
 
+The script can be started from /etc/rc.local by adding these lines to 
+the end of rc.local, before the line "exit 0":
+
+cd /home/pi/nma/
+python logpower.py &
+
+
+
+
