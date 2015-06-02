@@ -37,14 +37,14 @@ def do_read_settings():
 	
 	global emonapi
 
-	if not (os.path.isfile("settings.txt")):
+	if not (os.path.isfile("/home/pi/nma/settings.txt")):
 		# No settings found, exit
 		print ("No file with settings found, exiting")		
 		sys.exit()
 	config = ConfigParser.ConfigParser()
 	try:
 		print "Load settings"
-		config.read("settings.txt")
+		config.read("/home/pi/nma/settings.txt")
 	except:
 		print "Settings file not found"
 		sys.exit()	
@@ -160,8 +160,8 @@ def main(keys):
 		#time.sleep(3)
 
 if __name__ == "__main__":
-	if os.path.isfile('myapikey'):
-		keys = [_f for _f in open("myapikey",'r').read().split("\n") if _f]
+	if os.path.isfile('/home/pi/nma/myapikey'):
+		keys = [_f for _f in open("/home/pi/nma/myapikey",'r').read().split("\n") if _f]
 		print "Run main"
 		main(keys)
 	else:
